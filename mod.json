@@ -1,0 +1,83 @@
+{
+	"geode": "5.9.0",
+	"gd": {
+		"win": "2.2081",
+		"mac": "2.2081"
+	},
+	"id": "pelmeshkagrom.keyboard-scroll",
+	"name": "KeyboardScroll",
+	"version": "v1.0.0",
+	"developer": "pelmeshkagrom",
+	"description": "Easily navigate lists and pages using keyboard and mouse",
+	"dependencies": {
+		"geode.node-ids": ">=v1.23.3"
+	},
+	"tags": ["enhancement", "utility", "offline"],
+	"links": {
+		"community": "https://discord.gg/y8fqT5bP6c",
+		"source": "https://github.com/pelmeshkagrom/keyboard-scroll"
+	},
+	"settings": {
+		"scroll-keys-title": {
+			"type": "title",
+			"name": "Scroll Keys"
+		},
+		"scroll-up": {
+			"type": "keybind",
+			"name": "Scroll Up",
+			"description": "Key to scroll up",
+			"default": "W"
+		},
+		"scroll-down": {
+			"type": "keybind",
+			"name": "Scroll Down",
+			"description": "Key to scroll down",
+			"default": "S"
+		},
+		"page-right": {
+			"type": "keybind",
+			"name": "Next Page",
+			"description": "Key to go to the next page",
+			"default": "D"
+		},
+		"page-left": {
+			"type": "keybind",
+			"name": "Previous Page",
+			"description": "Key to go to the previous page",
+			"default": "A"
+		},
+		"page-mouse-scroll-title": {
+			"type": "title",
+			"name": "Horizontal Mouse Scroll"
+		},
+		"page-mouse-scroll-toggle": {
+			"type": "bool",
+			"name": "Enabled",
+			"description": "Enable/disable horizontal mouse scroll. Use Shift (by default) + MWheelUp/MWheelDown to scroll",
+			"default": true
+		},
+		"page-mouse-scroll-key": {
+			"type": "string",
+			"name": "Scroll Modifier",
+			"description": "A key that, when pressed, allows you to scroll pages horizontally using MWheelUp/MWheelDown",
+			"one-of": ["Shift", "Ctrl", "Alt"],
+			"default": "Shift"
+		},
+		"other-title": {
+			"type": "title",
+			"name": "Other"
+		},
+		"scroll-sensitivity": {
+			"type": "float",
+			"name": "Keyboard Scroll Sensitivity",
+			"description": "Controls the scrolling speed of lists when using the keyboard",
+			"default": 4.5,
+			"min": 0.1,
+			"max": 50.0,
+			"control": {
+				"slider": true,
+				"arrows": true
+			}
+		}
+	}
+}
