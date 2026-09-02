@@ -1,18 +1,13 @@
-<div align="center">
-    <div>
-        <a href="https://github.com/pelmeshkagrom/keyboard-scroll">
-            <img src="logo.png" width="130" height="130" alt="KeyboardScroll Mod Logo"/>
-        </a>
-        <h1 align="center">KeyboardScroll</h1>
-        <p align="center">A QoL mod that allows you to switch and scroll through pages using customizable keybinds.</p>
-    </div>
-    <div>
-        <img src="https://img.shields.io/github/downloads/pelmeshkagrom/keyboard-scroll/total?style=for-the-badge"/>
-        <a href="https://discord.gg/y8fqT5bP6c">
-            <img src="https://dcbadge.limes.pink/api/server/y8fqT5bP6c"/>
-        </a>
-    </div>
-</div>
+<img src="./logo.png" width="130" height="130" alt="KeyboardScroll Mod Logo">
+
+# KeyboardScroll
+
+![Mod version](https://api.geode-sdk.org/v1/mods/pelmeshkagrom.keyboard-scroll/status_badge?stat=version)
+![Downloads](https://api.geode-sdk.org/v1/mods/pelmeshkagrom.keyboard-scroll/status_badge?stat=downloads)
+![Geometry Dash version](https://api.geode-sdk.org/v1/mods/pelmeshkagrom.keyboard-scroll/status_badge?stat=gd_version)
+![Geode version](https://api.geode-sdk.org/v1/mods/pelmeshkagrom.keyboard-scroll/status_badge?stat=geode_version)
+
+A QoL mod that allows you to switch and scroll through pages using customizable keybinds.
 
 ## Features
 - Switch through pages, scroll up and down using keyboard
