@@ -6,7 +6,7 @@
 	},
 	"id": "pelmeshkagrom.keyboard-scroll",
 	"name": "KeyboardScroll",
-	"version": "v1.0.0",
+	"version": "v1.0.1",
 	"developer": "pelmeshkagrom",
 	"description": "Easily navigate lists and pages using keyboard and mouse",
 	"dependencies": {

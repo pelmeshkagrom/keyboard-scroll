@@ -18,7 +18,8 @@ static const std::vector<std::string> rightIDs = {
 	"right-button",
 	"right-arrow-button",
 	"page-next-button",
-	"next-previous-button" // on FRequestProfilePage
+	"next-previous-button", // on FRequestProfilePage
+	"right"
 };
 static const std::vector<std::string> leftIDs = {
 	"prev-page-button",
@@ -26,7 +27,8 @@ static const std::vector<std::string> leftIDs = {
 	"left-button",
 	"left-arrow-button",
 	"page-previous-button",
-	"previous-page-button"
+	"previous-page-button",
+	"left"
 };
 
 // Switch to the next/previous page
