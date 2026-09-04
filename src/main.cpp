@@ -78,6 +78,9 @@ static void activatePageBtn(std::string direction) {
 }
 
 class $modify(MyMouseDispatcher, CCMouseDispatcher) {
+	static void onModify(auto& self) {
+		(void) self.setHookPriorityBeforePre("cocos2d::CCMouseDispatcher::dispatchScrollMSG", "prevter.smooth-scroll");
+	}
 	// Keyboard vertical scroll
 	void updateScroll(float dt) {
 		if(!isHoldingUp && !isHoldingDown) return;
