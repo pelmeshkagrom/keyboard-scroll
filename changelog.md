@@ -1,3 +1,7 @@
+# 1.1.0
+* Added `Invert Scroll Direction` setting for horizontal mouse scrolling
+* Made performance and memory optimizations
+
 # 1.0.2
 * Fixed an issue that caused repeated scroll events when using the modifier-triggered page scroll alongside the `prevter.smooth-scroll` mod
 

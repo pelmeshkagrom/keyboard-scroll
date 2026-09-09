@@ -6,7 +6,7 @@
 	},
 	"id": "pelmeshkagrom.keyboard-scroll",
 	"name": "KeyboardScroll",
-	"version": "v1.0.2",
+	"version": "v1.1.0",
 	"developer": "pelmeshkagrom",
 	"description": "Easily navigate lists and pages using keyboard and mouse",
 	"dependencies": {
@@ -62,6 +62,12 @@
 			"description": "A key that, when pressed, allows you to scroll pages horizontally using MWheelUp/MWheelDown",
 			"one-of": ["Shift", "Ctrl", "Alt"],
 			"default": "Shift"
+		},
+		"invert-page-mouse-scroll": {
+			"type": "bool",
+			"name": "Invert Scroll Direction",
+			"description": "Inverts the wheel direction so Modifier + MWheelUp switches left and Modifier + MWheelDown switches right",
+			"default": false
 		},
 		"other-title": {
 			"type": "title",
