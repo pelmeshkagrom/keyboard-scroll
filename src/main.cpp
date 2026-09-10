@@ -2,6 +2,9 @@
 #include <Geode/loader/SettingV3.hpp>
 #include <Geode/modify/CCMouseDispatcher.hpp>
 #include <Geode/modify/CCKeyboardDispatcher.hpp>
+
+#include <string>
+#include <vector>
 #include <string_view>
 
 using namespace geode::prelude;
