@@ -158,20 +158,22 @@ class $modify(MyMouseDispatcher, CCMouseDispatcher) {
 		}
 
 		auto kbd = CCKeyboardDispatcher::get();
-
 		bool activeModifier = false;
-		if(mouseScrollModifier == "Shift") {
-			activeModifier = kbd->getShiftKeyPressed();
-		} else if(mouseScrollModifier == "Ctrl") {
-			activeModifier = kbd->getControlKeyPressed();
-		} else if(mouseScrollModifier == "Alt") {
-			activeModifier = kbd->getAltKeyPressed();
+
+		if(!isSchedulerScheduled && !isHoldingUp && !isHoldingDown) {
+			if(mouseScrollModifier == "Shift") {
+				activeModifier = kbd->getShiftKeyPressed();
+			} else if(mouseScrollModifier == "Ctrl") {
+				activeModifier = kbd->getControlKeyPressed();
+			} else if(mouseScrollModifier == "Alt") {
+				activeModifier = kbd->getAltKeyPressed();
+			}
 		}
 
 		if(!activeModifier) {
 			return CCMouseDispatcher::dispatchScrollMSG(y, x);
 		}
-		
+
 		if(y < 0.0f) {
 			activatePageBtn(!invertPageMouseScroll ? ScrollDirection::Right : ScrollDirection::Left);
 			return true;

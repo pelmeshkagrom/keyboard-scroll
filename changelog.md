@@ -1,3 +1,6 @@
+# 1.1.1
+* Fixed an issue where holding a modifier while using vertical keyboard scroll triggered infinite page scrolling
+
 # 1.1.0
 * Added `Invert Scroll Direction` setting for horizontal mouse scrolling
 * Made performance and memory optimizations
