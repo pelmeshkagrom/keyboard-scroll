@@ -6,7 +6,7 @@
 	},
 	"id": "pelmeshkagrom.keyboard-scroll",
 	"name": "KeyboardScroll",
-	"version": "v1.1.1",
+	"version": "v1.2.0",
 	"developer": "pelmeshkagrom",
 	"description": "Easily navigate lists and pages using keyboard and mouse",
 	"dependencies": {
@@ -38,13 +38,13 @@
 			"type": "keybind",
 			"name": "Next Page",
 			"description": "Key to go to the next page",
-			"default": "D"
+			"default": ["Right", "D"]
 		},
 		"page-left": {
 			"type": "keybind",
 			"name": "Previous Page",
 			"description": "Key to go to the previous page",
-			"default": "A"
+			"default": ["Left", "A"]
 		},
 		"page-mouse-scroll-title": {
 			"type": "title",
@@ -84,6 +84,12 @@
 				"slider": true,
 				"arrows": true
 			}
+		},
+		"disable-page-scroll-spam": {
+			"type": "bool",
+			"name": "Disable Page Scroll Spam",
+			"description": "Prevents continuous page scrolling when holding page-switching keys. This only affects custom binds from this mod; if arrow keys aren't bound, vanilla GD behavior remains unchanged",
+			"default": false
 		}
 	}
 }

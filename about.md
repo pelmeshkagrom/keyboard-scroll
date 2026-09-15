@@ -8,14 +8,15 @@ A <cg>QoL mod</cg> that allows you to <cy>switch and scroll</cy> through pages u
 ## Default keybinds
 - Scroll Up: W
 - Scroll Down: S
-- Next Page: D
-- Previous Page: A
+- Next Page: Arrow Right, D
+- Previous Page: Arrow Left, A
 - Modifier Key: Shift
 
 ## Configuration
 - Every keybind <cl>can be customized</cl> in the mod settings
 - Horizontal mouse scroll feature can be <cl>enabled</cl>/<cl>disabled</cl>
 - Configurable keyboard <cl>scroll sensitivity</cl> (when scrolling up/down)
+- Option to <cl>enable</cl>/<cl>disable</cl> page scroll spam when holding navigation keys
 
 ### Known limitations
 - Page switching (A/D) supports most major menus, but may not work in certain specific layouts.

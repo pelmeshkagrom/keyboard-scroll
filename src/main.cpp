@@ -20,6 +20,12 @@ static bool pageMouseScrollToggle = true;
 static std::string mouseScrollModifier = "Shift";
 static double kbdScrollSensitivity = 4.5;
 static bool invertPageMouseScroll = false;
+static bool disablePageScrollSpam = false;
+
+static std::vector<geode::Keybind> pageRightKeys;
+static std::vector<geode::Keybind> pageLeftKeys;
+static bool rightArrowKeyBound = false;
+static bool leftArrowKeyBound = false;
 
 static bool isHoldingUp = false;
 static bool isHoldingDown = false;
@@ -42,6 +48,29 @@ static const std::vector<std::string_view> leftIDs = {
 	"previous-page-button",
 	"left"
 };
+
+static void checkArrowKeybinds() {
+	rightArrowKeyBound = false;
+	leftArrowKeyBound = false;
+
+	for(int i = 0; i < pageRightKeys.size(); i++) {
+		if(pageRightKeys[i].key == cocos2d::enumKeyCodes::KEY_Right || pageRightKeys[i].key == cocos2d::enumKeyCodes::KEY_ArrowRight) {
+			rightArrowKeyBound = true;
+		}
+		if(pageRightKeys[i].key == cocos2d::enumKeyCodes::KEY_Left || pageRightKeys[i].key == cocos2d::enumKeyCodes::KEY_ArrowLeft) {
+			leftArrowKeyBound = true;
+		}
+	}
+
+	for(int i = 0; i < pageLeftKeys.size(); i++) {
+		if(pageLeftKeys[i].key == cocos2d::enumKeyCodes::KEY_Left || pageLeftKeys[i].key == cocos2d::enumKeyCodes::KEY_ArrowLeft) {
+			leftArrowKeyBound = true;
+		}
+		if(pageLeftKeys[i].key == cocos2d::enumKeyCodes::KEY_Right || pageLeftKeys[i].key == cocos2d::enumKeyCodes::KEY_ArrowRight) {
+			rightArrowKeyBound = true;
+		}
+	}
+}
 
 // Switch to the next/previous page
 static void activatePageBtn(ScrollDirection direction) {
@@ -186,6 +215,26 @@ class $modify(MyMouseDispatcher, CCMouseDispatcher) {
 	}
 };
 
+class $modify(MyKeyboardDispatcher, CCKeyboardDispatcher) {
+	bool dispatchKeyboardMSG(cocos2d::enumKeyCodes key, bool isKeyDown, bool isKeyRepeat, double timestamp) {
+		if(!rightArrowKeyBound && !leftArrowKeyBound) return CCKeyboardDispatcher::dispatchKeyboardMSG(key, isKeyDown, isKeyRepeat, timestamp);
+
+		if(isKeyDown) {
+			if(key == cocos2d::enumKeyCodes::KEY_Right || key == cocos2d::enumKeyCodes::KEY_ArrowRight) {
+				if(rightArrowKeyBound) {
+					return true;
+				}
+			} else if(key == cocos2d::enumKeyCodes::KEY_Left || key == cocos2d::enumKeyCodes::KEY_ArrowLeft) {
+				if(leftArrowKeyBound) {
+					return true;
+				}
+			}
+		}
+
+		return CCKeyboardDispatcher::dispatchKeyboardMSG(key, isKeyDown, isKeyRepeat, timestamp);
+	}
+};
+
 static void kbScroll(ScrollDirection direction, bool isHolding) {
 	if(direction == ScrollDirection::Up) isHoldingUp = isHolding;
 	if(direction == ScrollDirection::Down) isHoldingDown = isHolding;
@@ -206,22 +255,24 @@ $on_game(Loaded) {
 		if(!repeat) {
 			kbScroll(ScrollDirection::Up, down);
 		}
-    });
+	});
 	listenForKeybindSettingPresses("scroll-down", [](Keybind const& keybind, bool down, bool repeat, double timestamp) {
 		if(!repeat) {
 			kbScroll(ScrollDirection::Down, down);
 		}
-    });
+	});
 	listenForKeybindSettingPresses("page-right", [](Keybind const& keybind, bool down, bool repeat, double timestamp) {
-        if (down && !repeat) {
+		if (down) {
+			if(disablePageScrollSpam && repeat) return;
 			activatePageBtn(ScrollDirection::Right);
-        }
-    });
+		}
+	});
 	listenForKeybindSettingPresses("page-left", [](Keybind const& keybind, bool down, bool repeat, double timestamp) {
-		if (down && !repeat) {
+		if (down) {
+			if(disablePageScrollSpam && repeat) return;
 			activatePageBtn(ScrollDirection::Left);
-        }
-    });
+		}
+	});
 }
 
 $on_mod(Loaded) {
@@ -241,4 +292,21 @@ $on_mod(Loaded) {
 	listenForSettingChanges<bool>("invert-page-mouse-scroll", [](bool value) {
 		invertPageMouseScroll = value;
 	});
+	disablePageScrollSpam = Mod::get()->getSettingValue<bool>("disable-page-scroll-spam");
+	listenForSettingChanges<bool>("disable-page-scroll-spam", [](bool value) {
+		disablePageScrollSpam = value;
+	});
+
+	pageRightKeys = Mod::get()->getSettingValue<std::vector<geode::Keybind>>("page-right");
+	listenForSettingChanges<std::vector<geode::Keybind>>("page-right", [](std::vector<geode::Keybind> value) {
+		pageRightKeys = value;
+		checkArrowKeybinds();
+	});
+	pageLeftKeys = Mod::get()->getSettingValue<std::vector<geode::Keybind>>("page-left");
+	listenForSettingChanges<std::vector<geode::Keybind>>("page-left", [](std::vector<geode::Keybind> value) {
+		pageLeftKeys = value;
+		checkArrowKeybinds();
+	});
+
+	checkArrowKeybinds();
 }
