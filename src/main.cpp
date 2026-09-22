@@ -16,6 +16,8 @@ enum class ScrollDirection {
 	Down
 };
 
+bool actionBlocked = false;
+
 static bool pageMouseScrollToggle = true;
 static std::string mouseScrollModifier = "Shift";
 static double kbdScrollSensitivity = 4.5;
@@ -182,7 +184,7 @@ class $modify(MyMouseDispatcher, CCMouseDispatcher) {
 
 	// Horizontal MWheelUp/MWheelDown scroll
 	bool dispatchScrollMSG(float y, float x) {
-		if(!pageMouseScrollToggle) {
+		if(!pageMouseScrollToggle || actionBlocked) {
 			return CCMouseDispatcher::dispatchScrollMSG(y, x);
 		}
 
@@ -217,7 +219,7 @@ class $modify(MyMouseDispatcher, CCMouseDispatcher) {
 
 class $modify(MyKeyboardDispatcher, CCKeyboardDispatcher) {
 	bool dispatchKeyboardMSG(cocos2d::enumKeyCodes key, bool isKeyDown, bool isKeyRepeat, double timestamp) {
-		if(!rightArrowKeyBound && !leftArrowKeyBound) return CCKeyboardDispatcher::dispatchKeyboardMSG(key, isKeyDown, isKeyRepeat, timestamp);
+		if((!rightArrowKeyBound && !leftArrowKeyBound) || actionBlocked) return CCKeyboardDispatcher::dispatchKeyboardMSG(key, isKeyDown, isKeyRepeat, timestamp);
 
 		if(isKeyDown) {
 			if(key == cocos2d::enumKeyCodes::KEY_Right || key == cocos2d::enumKeyCodes::KEY_ArrowRight) {
@@ -252,25 +254,33 @@ static void kbScroll(ScrollDirection direction, bool isHolding) {
 // Keybind actions
 $on_game(Loaded) {
 	listenForKeybindSettingPresses("scroll-up", [](Keybind const& keybind, bool down, bool repeat, double timestamp) {
-		if(!repeat) {
-			kbScroll(ScrollDirection::Up, down);
+		if(!actionBlocked) {
+			if(!repeat) {
+				kbScroll(ScrollDirection::Up, down);
+			}
 		}
 	});
 	listenForKeybindSettingPresses("scroll-down", [](Keybind const& keybind, bool down, bool repeat, double timestamp) {
-		if(!repeat) {
-			kbScroll(ScrollDirection::Down, down);
+		if(!actionBlocked) {
+			if(!repeat) {
+				kbScroll(ScrollDirection::Down, down);
+			}
 		}
 	});
 	listenForKeybindSettingPresses("page-right", [](Keybind const& keybind, bool down, bool repeat, double timestamp) {
-		if (down) {
-			if(disablePageScrollSpam && repeat) return;
-			activatePageBtn(ScrollDirection::Right);
+		if(!actionBlocked) {
+			if (down) {
+				if(disablePageScrollSpam && repeat) return;
+				activatePageBtn(ScrollDirection::Right);
+			}
 		}
 	});
 	listenForKeybindSettingPresses("page-left", [](Keybind const& keybind, bool down, bool repeat, double timestamp) {
-		if (down) {
-			if(disablePageScrollSpam && repeat) return;
-			activatePageBtn(ScrollDirection::Left);
+		if(!actionBlocked) {
+			if (down) {
+				if(disablePageScrollSpam && repeat) return;
+				activatePageBtn(ScrollDirection::Left);
+			}
 		}
 	});
 }

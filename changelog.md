@@ -1,3 +1,6 @@
+# 1.2.1
+* Keyboard scrolling is now automatically deactivated inside `LevelEditorLayer`
+
 # 1.2.0
 * Added `Disable Page Scroll Spam` setting to control page scrolling on key hold
 * Fixed an issue where using arrow keys (`Right`/`Left`) as page-switching binds caused double input in some menus
