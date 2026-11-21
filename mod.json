@@ -1,12 +1,12 @@
 {
-	"geode": "5.9.0",
+	"geode": "6.0.0-beta.1",
 	"gd": {
-		"win": "2.2081",
-		"mac": "2.2081"
+		"win": "2.2091",
+		"mac": "2.2091"
 	},
 	"id": "pelmeshkagrom.keyboard-scroll",
 	"name": "KeyboardScroll",
-	"version": "v1.2.1",
+	"version": "v1.2.2",
 	"developer": "pelmeshkagrom",
 	"description": "Easily navigate lists and pages using keyboard and mouse",
 	"dependencies": {

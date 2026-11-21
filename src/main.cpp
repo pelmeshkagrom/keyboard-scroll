@@ -39,7 +39,6 @@ static const std::vector<std::string_view> rightIDs = {
 	"next-button",
 	"right-button",
 	"right-arrow-button",
-	"next-previous-button", // on FRequestProfilePage
 	"right"
 };
 static const std::vector<std::string_view> leftIDs = {
@@ -47,7 +46,6 @@ static const std::vector<std::string_view> leftIDs = {
 	"prev-button",
 	"left-button",
 	"left-arrow-button",
-	"previous-page-button",
 	"left"
 };
 

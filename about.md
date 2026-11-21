@@ -1,9 +1,10 @@
 # KeyboardScroll
-A <cg>QoL mod</cg> that allows you to <cy>switch and scroll</cy> through pages using <cl>customizable keybinds</cl>.
+A <cg>QoL mod</c> that allows you to <cy>switch and scroll</c> through pages using <cl>customizable keybinds</c>.
 
 ## Features
-- <cy>Switch</cy> through pages, <cy>scroll</cy> up and down using <cl>keyboard</cl>
-- <cy>Switch</cy> through pages using <cl>Modifier Key</cl> (Shift by default) + <cl>MWheelUP</cl>/<cl>MWheelDown</cl>
+- <cy>Switch</c> through pages <cg>across most menus</c> with <cl>keybinds</c> (fixing vanilla's limited arrow-key support)
+- <cy>Scroll</c> up and down using <cl>keyboard</c>
+- <cy>Switch</c> through pages using <cl>Modifier Key</c> (Shift by default) + <cl>MWheelUP</c>/<cl>MWheelDown</c>
 
 ## Default keybinds
 - Scroll Up: W
@@ -13,10 +14,10 @@ A <cg>QoL mod</cg> that allows you to <cy>switch and scroll</cy> through pages u
 - Modifier Key: Shift
 
 ## Configuration
-- Every keybind <cl>can be customized</cl> in the mod settings
-- Horizontal mouse scroll feature can be <cl>enabled</cl>/<cl>disabled</cl>
-- Configurable keyboard <cl>scroll sensitivity</cl> (when scrolling up/down)
-- Option to <cl>enable</cl>/<cl>disable</cl> page scroll spam when holding navigation keys
+- Every keybind <cl>can be customized</c> in the mod settings
+- Horizontal mouse scroll feature can be <cl>enabled</c>/<cl>disabled</c>
+- Configurable keyboard <cl>scroll sensitivity</c> (when scrolling up/down)
+- Option to <cl>enable</c>/<cl>disable</c> page scroll spam when holding navigation keys
 
 ### Known limitations
 - Page switching (A/D) supports most major menus, but may not work in certain specific layouts.

@@ -10,7 +10,8 @@
 A QoL mod that allows you to switch and scroll through pages using customizable keybinds.
 
 ## Features
-- Switch through pages, scroll up and down using keyboard
+- Switch through pages across most menus with keybinds (fixing vanilla's limited arrow-key support)
+- Scroll up and down using keyboard
 - Switch through pages using Modifier Key (Shift by default) + MWheelUP/MWheelDown
 
 ## Default keybinds
